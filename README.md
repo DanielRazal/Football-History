@@ -2,10 +2,13 @@
 
 Welcome to the Football History - a dynamic platform celebrating football's finest through **C# WEB API, Angular, and SQL Server.** Here's what awaits you:
 
-**The Football History is a user-friendly website that the greatest football players of all time. Here's what you can expect:
-Explore Legends: Discover the top 10 football legends chosen by the creator. Get detailed info about their careers, achievements, and more.
-Quick Quizzes: Test your knowledge with fun timed quizzes about the legends. Get a score and see how you rank on the Top Score table.
-Compare Players: Select any two players and see who comes out on top based on their stats.**
+**The Football History is a user-friendly website that the greatest football players of all time. Here's what you can expect:**
+
+**Explore Legends: Discover the top 10 football legends chosen by the creator. Get detailed info about their careers, achievements, and more.**
+
+**Quick Quizzes: Test your knowledge with fun timed quizzes about the legends. Get a score and see how you rank on the Top Score table.**
+
+**Compare Players: Select any two players and see who comes out on top based on their stats.**
 
 ## Running the Project
 
