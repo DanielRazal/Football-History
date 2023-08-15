@@ -1,0 +1,82 @@
+<app-header-inside></app-header-inside>
+<div *ngIf="loading; else loadingState" class="flex justify-center">
+    <div class="w-full md:w-1/2 mt-20">
+        <label for="default-search"
+            class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+        <div class="relative">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                </svg>
+            </div>
+            <input type="search" [(ngModel)]="searchTerm" id="default-search"
+                class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Search">
+        </div>
+    </div>
+</div>
+
+<div *ngIf="loading" class="flex justify-center mt-4">
+    <div class="w-full max-w-3xl">
+        <div class="max-h-96">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead
+                    class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 sticky top-0">
+                    <tr>
+                        <th scope="col" class="px-2 py-2 sm:px-6">
+                            #
+                        </th>
+                        <th scope="col" class="px-2 py-2 sm:px-6"> 
+                            Player name
+                        </th>
+                        <th scope="col" class="px-2 py-2 sm:px-6">
+                            Goals
+                        </th>
+                        <th scope="col" class="px-2 py-2 sm:px-6"> 
+                            Assists
+                        </th>
+                        <th scope="col" class="px-2 py-2 sm:px-6">
+                            Position
+                        </th>
+                        <th scope="col" class="px-2 py-2 sm:px-6">
+                            Nationality
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of players | searchFilterPlayer: searchTerm; let i = index"
+                        (click)="nav(item, 'about-player')"
+                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
+                        <th scope="row" class="px-2 py-2 sm:px-6">
+                            {{i + 1}}
+                        </th>
+                        <td class="px-2 py-2 sm:px-">
+                            {{item.fullName}}
+                        </td>
+                        <td class="px-2 py-2 sm:px-6">
+                            {{item.goals}}
+                        </td>
+                        <td class="px-2 py-2 sm:px-6">
+                            {{item.assists}}
+                        </td>
+                        <td class="px-2 py-2 sm:px-6">
+                            {{ getPositionName(item.position.positionName) }}
+                        </td>
+                        <td class="px-2 py-2 sm:px-6">
+                            {{ getNationalityName(item.nationality.nationalityName) }}
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<ng-template #loadingState>
+    <div class="flex items-center justify-center h-screen">
+        <fa-icon class="text-7xl" [icon]="spinnerIcon" [spin]="true"></fa-icon>
+    </div>
+</ng-template>

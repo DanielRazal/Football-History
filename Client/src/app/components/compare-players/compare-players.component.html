@@ -1,0 +1,109 @@
+<app-header-inside></app-header-inside>
+
+
+<div class="flex mt-28 justify-between">
+    <div>
+        <button (click)="showFirstDropdown = !showFirstDropdown" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4
+         focus:ring-gray-300 font-medium rounded-lg text-sm px-2 sm:px-4 lg:px-5 py-1 sm:py-2
+          lg:py-2.5 mr-2 dark:hover:bg-gray-700
+        focus:outline-none bg-gray-50 w-24 h-16 ml-32 lg:ml-16 md:ml-10 sm:ml-6 firstButton">
+            {{ selectPlayer1 }}
+        </button>
+
+        <div *ngIf="showFirstDropdown" class="ml-10 dropdown-menu absolute mt-2 py-2 w-48 bg-white rounded-md shadow-lg z-10
+        lg:ml-16 md:ml-10 sm:ml-6 firstButton">
+            <ul class="space-y-2">
+                <li (click)="selectFirstPlayer(null)"
+                    class="cursor-pointer px-4 py-1 text-sm lg:text-xs md:text-xs sm:text-xs hover:bg-gray-100 text-black">
+                    None
+                </li>
+                <li *ngFor="let player of players" (click)="selectFirstPlayer(player)"
+                    class="cursor-pointer px-4 py-1 text-sm lg:text-xs md:text-xs sm:text-xs hover:bg-gray-100 text-black">
+                    {{ player.fullName }}
+                </li>
+            </ul>
+        </div>
+
+        <div *ngIf="selectedFirstPlayer" class="mt-8 ml-10 lg:ml-16 md:ml-10 sm:ml-6 firstButton">
+            <div class="mt-5">Player: {{ selectedFirstPlayer.fullName }}</div>
+            <div [class.text-green-500]="selectedFirstPlayer && selectedSecondPlayer && selectedFirstPlayer.goals > selectedSecondPlayer.goals"
+                [class.text-red-500]="selectedFirstPlayer && selectedSecondPlayer && selectedFirstPlayer.goals < selectedSecondPlayer.goals"
+                class="mt-5">Goals: {{ selectedFirstPlayer.goals }}</div>
+            <div [class.text-green-500]="selectedFirstPlayer && selectedSecondPlayer && selectedFirstPlayer.assists > selectedSecondPlayer.assists"
+                [class.text-red-500]="selectedFirstPlayer && selectedSecondPlayer && selectedFirstPlayer.assists < selectedSecondPlayer.assists"
+                class="mt-5">Assists: {{ selectedFirstPlayer.assists }}</div>
+            <div [class.text-green-500]="selectedFirstPlayer && selectedSecondPlayer && selectedFirstPlayer.appearances > selectedSecondPlayer.appearances"
+                [class.text-red-500]="selectedFirstPlayer && selectedSecondPlayer && selectedFirstPlayer.appearances < selectedSecondPlayer.appearances"
+                class="mt-5">Appearances: {{ selectedFirstPlayer.appearances }}</div>
+            <div [class.text-green-500]="selectedFirstPlayer && selectedSecondPlayer && selectedFirstPlayer.titles > selectedSecondPlayer.titles"
+                [class.text-red-500]="selectedFirstPlayer && selectedSecondPlayer && selectedFirstPlayer.titles < selectedSecondPlayer.titles"
+                class="mt-5">Titles: {{ selectedFirstPlayer.titles }}</div>
+            <div [class.text-green-500]="selectedFirstPlayer && selectedSecondPlayer && selectedFirstPlayer.goalContributions > selectedSecondPlayer.goalContributions"
+                [class.text-red-500]="selectedFirstPlayer && selectedSecondPlayer && selectedFirstPlayer.goalContributions < selectedSecondPlayer.goalContributions"
+                class="mt-5">Goal Contributions: {{ selectedFirstPlayer.goalContributions }}</div>
+            <div [class.text-green-500]="selectedFirstPlayer && selectedSecondPlayer && selectedFirstPlayer.goalsRatio > selectedSecondPlayer.goalsRatio"
+                [class.text-red-500]="selectedFirstPlayer && selectedSecondPlayer && selectedFirstPlayer.goalsRatio < selectedSecondPlayer.goalsRatio"
+                class="mt-5">Goals Ratio: {{ selectedFirstPlayer.goalsRatio }}</div>
+            <div [class.text-green-500]="selectedFirstPlayer && selectedSecondPlayer && selectedFirstPlayer.assistsRatio > selectedSecondPlayer.assistsRatio"
+                [class.text-red-500]="selectedFirstPlayer && selectedSecondPlayer && selectedFirstPlayer.assistsRatio < selectedSecondPlayer.assistsRatio"
+                class="mt-5">Assists Ratio: {{ selectedFirstPlayer.assistsRatio }}</div>
+        </div>
+    </div>
+
+    <div class="relative">
+        <button (click)="showSecondDropdown = !showSecondDropdown" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4
+        focus:ring-gray-300 font-medium rounded-lg text-sm px-2 sm:px-4
+        lg:px-5 py-1 sm:py-2 lg:py-2.5 dark:hover:bg-gray-700
+        focus:outline-none bg-gray-50 w-24 h-16 lg:mr-16 md:mr-10 sm:mr-6 secondButton">
+            {{ selectPlayer2 }}
+        </button>
+        <div *ngIf="showSecondDropdown" class="dropdown-menu absolute mt-2 py-2 w-48
+         bg-white rounded-md shadow-lg z-10
+        right-0  mr-16 lg:mr-16 md:mr-10 sm:mr-6 secondDropDown">
+            <ul class="space-y-2">
+                <li (click)="selectSecondPlayer(null)"
+                    class="cursor-pointer px-4 py-1 text-sm lg:text-xs md:text-xs sm:text-xs hover:bg-gray-100 text-black">
+                    None
+                </li>
+                <li *ngFor="let player of players" (click)="selectSecondPlayer(player)"
+                    class="cursor-pointer px-4 py-1 text-sm lg:text-xs md:text-xs sm:text-xs hover:bg-gray-100 text-black">
+                    {{ player.fullName }}
+                </li>
+            </ul>
+        </div>
+
+        <div *ngIf="selectedSecondPlayer" class="mt-8 right-0">
+            <div class="mt-5">Player: {{ selectedSecondPlayer.fullName }}</div>
+            <div [class.text-green-500]="selectedFirstPlayer && selectedSecondPlayer && selectedSecondPlayer.goals > selectedFirstPlayer.goals"
+                [class.text-red-500]="selectedFirstPlayer && selectedSecondPlayer && selectedSecondPlayer.goals < selectedFirstPlayer.goals"
+                class="mt-5">Goals: {{ selectedSecondPlayer.goals }}</div>
+            <div [class.text-green-500]="selectedFirstPlayer && selectedSecondPlayer && selectedSecondPlayer.assists > selectedFirstPlayer.assists"
+                [class.text-red-500]="selectedFirstPlayer && selectedSecondPlayer && selectedSecondPlayer.assists < selectedFirstPlayer.assists"
+                class="mt-5">Assists: {{ selectedSecondPlayer.assists }}</div>
+            <div [class.text-green-500]="selectedFirstPlayer && selectedSecondPlayer && selectedSecondPlayer.appearances > selectedFirstPlayer.appearances"
+                [class.text-red-500]="selectedFirstPlayer && selectedSecondPlayer && selectedSecondPlayer.appearances < selectedFirstPlayer.appearances"
+                class="mt-5">Appearances: {{ selectedSecondPlayer.appearances }}</div>
+            <div [class.text-green-500]="selectedFirstPlayer && selectedSecondPlayer && selectedSecondPlayer.titles > selectedFirstPlayer.titles"
+                [class.text-red-500]="selectedFirstPlayer && selectedSecondPlayer && selectedSecondPlayer.titles < selectedFirstPlayer.titles"
+                class="mt-5">Titles: {{ selectedSecondPlayer.titles }}</div>
+            <div [class.text-green-500]="selectedFirstPlayer && selectedSecondPlayer && selectedSecondPlayer.goalContributions > selectedFirstPlayer.goalContributions"
+                [class.text-red-500]="selectedFirstPlayer && selectedSecondPlayer && selectedSecondPlayer.goalContributions < selectedFirstPlayer.goalContributions"
+                class="mt-5">Goal Contributions: {{ selectedSecondPlayer.goalContributions }}</div>
+            <div [class.text-green-500]="selectedFirstPlayer && selectedSecondPlayer && selectedSecondPlayer.goalsRatio > selectedFirstPlayer.goalsRatio"
+                [class.text-red-500]="selectedFirstPlayer && selectedSecondPlayer && selectedSecondPlayer.goalsRatio < selectedFirstPlayer.goalsRatio"
+                class="mt-5">Goals Ratio: {{ selectedSecondPlayer.goalsRatio }}</div>
+            <div [class.text-green-500]="selectedFirstPlayer && selectedSecondPlayer && selectedSecondPlayer.assistsRatio > selectedFirstPlayer.assistsRatio"
+                [class.text-red-500]="selectedFirstPlayer && selectedSecondPlayer && selectedSecondPlayer.assistsRatio < selectedFirstPlayer.assistsRatio"
+                class="mt-5">Assists Ratio: {{ selectedSecondPlayer.assistsRatio }}</div>
+        </div>
+    </div>
+</div>
+
+<div class="flex justify-center">
+    <div class="relative compare-button-container">
+        <button (click)="comparePlayers(selectedFirstPlayer!, selectedSecondPlayer!)"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+            Compare
+        </button>
+    </div>
+</div>

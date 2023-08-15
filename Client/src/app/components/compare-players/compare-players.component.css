@@ -1,0 +1,27 @@
+.compare-button-container {
+  position: absolute;
+  top: 80%;
+}
+
+@media (max-width: 639px) {
+  .dropdown-menu li {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  .firstButton{
+    margin-left: 2px;
+  }
+
+  .secondButton{
+    margin-right: 2px;
+  }
+
+  .secondDropDown{
+    margin-right: 0.3rem;
+  }
+}
+
+.secondButton {
+  right: 0;
+}

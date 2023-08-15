@@ -1,0 +1,74 @@
+<header class="fixed top-0 left-0 right-0 z-10">
+    <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+        <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+            <div class="flex items-center lg:order-2">
+
+                <div class="w-10 h-10 sm:w-10 sm:h-10 md:w-10 md:h-10 lg:w-10 lg:h-10">
+                    <img *ngIf="user && user.photoUrl" [src]="getPhotoUrl(user.photoUrl)" alt="User Photo"
+                        class="w-full h-full rounded-full -ml-3 -sm:ml-3 -md:ml-3 -lg:ml-3">
+                </div>
+
+
+                <a routerLink="/players" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300
+                font-medium rounded-lg text-xs sm:text-sm md:text-sm lg:text-base px-2 sm:px-4 lg:px-5
+                py-1 sm:py-2 lg:py-2.5 mr-0 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">
+                    Players
+                </a>
+
+
+
+                <div class="relative">
+                    <button (click)="showDropdown = !showDropdown"
+                        class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300
+                        font-medium rounded-lg text-xs sm:text-sm md:text-base lg:text-base px-2 sm:px-4 lg:px-5
+                        py-1 sm:py-2 lg:py-2.5 mr-0 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">
+                        About
+                    </button>
+
+                    <div *ngIf="showDropdown"
+                        class="dropdown-menu absolute mt-2 py-2 w-48 bg-white rounded-md shadow-lg z-10">
+                        <ul>
+                            <li *ngFor="let player of players" (click)="nav(player, 'about-player')"
+                                class="cursor-pointer px-4 py-2 hover:bg-gray-100 text-black text-xs sm:text-sm md:text-base lg:text-base">
+                                {{ player.fullName }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <a routerLink="/compare-players" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 
+                font-medium rounded-lg text-xs sm:text-sm md:text-base lg:text-base px-2 sm:px-4 lg:px-5
+                py-1 sm:py-2 lg:py-2.5 mr-0 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">
+                    Compare
+                </a>
+
+                <a *ngIf="quizCompleted" routerLink="/quiz" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 
+                font-medium rounded-lg text-xs sm:text-sm md:text-base lg:text-base px-2 sm:px-4 lg:px-5
+                py-1 sm:py-2 lg:py-2.5 mr-0 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">
+                    Quiz
+                </a>
+
+                <div class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 
+                font-medium rounded-lg text-xs sm:text-sm md:text-base lg:text-base px-2 sm:px-4 lg:px-5
+                py-1 sm:py-2 lg:py-2.5 mr-0 dark:hover:bg-gray-700 focus:outline-none
+                 dark:focus:ring-gray-800 cursor-pointer" (click)="topScore()">
+                    Top Score
+                </div>
+
+                <a class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 
+                font-medium rounded-lg text-xs sm:text-sm md:text-base lg:text-base px-2 sm:px-4 lg:px-5
+                py-1 sm:py-2 lg:py-2.5 mr-0 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800 cursor-pointer"
+                    (click)="deleteUser()">
+                    Delete
+                </a>
+
+                <a class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 
+                font-medium rounded-lg text-xs sm:text-sm md:text-base lg:text-base px-2 sm:px-4 lg:px-5
+                py-1 sm:py-2 lg:py-2.5 mr-0 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800 cursor-pointer"
+                    (click)="LogOut()">
+                    LogOut
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>

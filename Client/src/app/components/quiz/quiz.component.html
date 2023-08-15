@@ -1,0 +1,58 @@
+<div class="bg-blue-500 py-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-center items-center">
+            <h1 class="text-white text-2xl font-semibold text-center" *ngIf="quizzes.length > 0 && quizzes[0]?.name">
+                {{ quizzes[0].name }}</h1>
+        </div>
+    </div>
+</div>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mt-8">
+        <form [formGroup]="addCompletedQuizForm" (ngSubmit)="addCompletedQuiz()">
+
+            <div class="question-timer-container" *ngFor="let quiz of quizzes">
+                <div *ngFor="let question of quiz.questions; let i = index">
+                    <div *ngIf="i === currentQuestionIndex">
+                        <div class="">
+                            <div class="flex justify-between">
+                                <h1 class="text-base sm:text-lg md:text-2xl lg:text-2x1">{{i + 1}}&#41; {{
+                                    question.title }}</h1>
+                                <div class="ml-4">
+                                    <p class="text-white text-base sm:text-lg md:text-2xl lg:text-2xl">Time left:
+                                        <span [textContent]="formattedTime" [class.red-text]="timerSeconds < 60"></span>
+                                        seconds
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div *ngFor="let answer of question.answers" class="mt-8 sm:mt-8 md:mt-12 lg:mt-14">
+                                <label class="flex items-center" [for]="answer.id">
+                                  <input *ngIf="question.questionType.id === 1" type="radio" [value]="answer.id" formArrayName="answerId"
+                                    [(ngModel)]="selectedAnswers[i]" [ngModelOptions]="{standalone: true}"
+                                    (change)="updateSelectedAnswerIds(answer.id)">
+                                  <input *ngIf="question.questionType.id === 2" type="checkbox" [value]="answer.id" formArrayName="answerId"
+                                    
+                                    (change)="updateSelectedAnswerIds(answer.id)">
+                                  <span class="ml-2 text-white text-sm sm:text-base lg:text-lg">{{ answer.text }}</span>
+                                </label>
+                              </div>
+
+                        </div>
+                        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+                            <div class="flex justify-between items-center space-x-4">
+                                <button type="button" class="px-4 py-2 bg-gray-500 text-white rounded"
+                                    (click)="prevQuestion()" *ngIf="currentQuestionIndex !== 0">PREV</button>
+                                <button type="submit" class="px-4 py-2 bg-green-500 text-white rounded"
+                                    *ngIf="currentQuestionIndex === quiz.questions.length - 1">Submit</button>
+                                <button type="button" class="px-4 py-2 bg-blue-500 text-white rounded"
+                                    (click)="nextQuestion()"
+                                    *ngIf="currentQuestionIndex < quiz.questions.length - 1">NEXT</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

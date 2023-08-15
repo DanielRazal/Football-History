@@ -1,0 +1,86 @@
+
+
+<div class="app-container">
+    <app-header-inside></app-header-inside>
+    <!-- This is an example component -->
+
+    <div class="container mx-auto shadow-lg rounded-lg mt-16">
+        <!-- header -->
+        <div class="px-5 py-5 bg-gray-200 border-b-2">
+            <div class="header flex justify-between items-center">
+                <div *ngIf="selectedUser" class="flex items-center justify-center w-full">
+                    <h3 class="text-black">Chat with {{ selectedUser.firstName }} {{ selectedUser.lastName }}</h3>
+                </div>
+            </div>
+        </div>
+        <!-- end header -->
+
+        <!-- Chatting -->
+        <div class="flex flex-row justify-between bg-white">
+            <!-- chat list -->
+            <div class="flex flex-col w-2/5 border-r-2 overflow-y-auto">
+                <!-- search component -->
+                <div class="border-b-2 py-4 px-2">
+                    <input type="text" placeholder="search chatting"
+                        class="text-black py-2 px-2 border-2 border-gray-200 rounded-2xl w-full"
+                        [(ngModel)]="searchTerm" />
+                </div>
+                <!-- end search component -->
+
+                <!-- user list -->
+                <div class="user-list-container">
+                    <div *ngFor="let user of usersFilter | searchFilterUser: searchTerm;" (click)="openChatWindow(user)"
+                        class="flex flex-row py-4 px-2 justify-center items-center border-b-2 cursor-pointer">
+                        <div class="w-1/4">
+                            <img *ngIf="user.photoUrl" [src]="getPhotoUrl(user.photoUrl)" alt="User Photo"
+                                class="object-cover h-12 w-12 rounded-full" />
+                            <img *ngIf="!user.photoUrl"
+                                src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+                                alt="User Photo" class="object-cover h-12 w-12 rounded-full" />
+                        </div>
+                        <div class="w-full text-black">
+                            {{ user.firstName }} {{ user.lastName }}
+                        </div>
+                    </div>
+                </div>
+                <!-- end user list -->
+            </div>
+            <!-- end chat list -->
+
+            <!-- message -->
+            <div class="w-full px-5 flex flex-col justify-between">
+                <div class="flex flex-col mt-5">
+                </div>
+
+                <div class="chat-container overflow-y-auto px-6 py-4" style="height: 300px; overflow-y: auto;">
+                    <div *ngFor="let chatMessage of chatMessages">
+                        <div class="flex"
+                            [ngClass]="{'justify-start': chatMessage.user.id === user.id, 'justify-end': chatMessage.user.id !== user.id}">
+                            <div [ngClass]="{'bg-gray-200': chatMessage.user.id !== user.id, 'bg-green-500': chatMessage.user.id === user.id}"
+                                class="rounded-lg p-3 message-container">
+                                <p class="text-sm" [ngClass]="{'text-white': chatMessage.user.id === user.id}"
+                                    style="word-wrap: break-word;">
+                                    {{ chatMessage.content }}
+                                </p>
+                            </div>
+                            <img *ngIf="chatMessage.user && chatMessage.user.photoUrl"
+                                [src]="getPhotoUrl(chatMessage.user.photoUrl)" alt="User Photo"
+                                class="w-8 h-8 rounded-full ml-1 sm:ml-2 mr-2"
+                                [ngClass]="{'order-first': chatMessage.user.id === user.id, 'order-last': chatMessage.user.id !== user.id}">
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <ng-container *ngIf="selectedUser">
+
+                    <form [formGroup]="messageForm" (ngSubmit)="addMessage()">
+                        <!-- Message form -->
+                        <div class="flex">
+                            <input formControlName="content" class="flex-1 bg-gray-300 py-3 px-3 rounded-xl" type="text"
+                                placeholder="type your message here..." />
+                            <button type="submit" class="ml-3 px-4 py-2 bg-blue-500 text-white rounded-md">Send</button>
+                        </div>
+                    </form>
+                </ng-container>
