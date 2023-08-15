@@ -31,7 +31,7 @@ To run the Users project, follow these steps:
 
 1. Open another terminal or command prompt and navigate to the client project directory:
 
-   **cd cd /FootballHistory/Server/Server**
+   **cd cd /FootballHistory/Client**
 
 2. Install the necessary dependencies by running the following command:
 
