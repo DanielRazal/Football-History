@@ -75,10 +75,11 @@ export class QuizComponent implements OnInit {
 
   stopTimer() {
     clearInterval(this.quizTimer);
+    this.addCompletedQuiz();
   }
 
   resetTimer() {
-    this.timerSeconds = 600;
+    this.timerSeconds = 10;
     this.formattedTime = this.formatTime(this.timerSeconds);
     this.startTimer();
   }

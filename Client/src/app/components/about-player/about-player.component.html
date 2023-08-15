@@ -1,82 +1,86 @@
 <app-header-inside></app-header-inside>
 
-<div  *ngIf="loading; else loadingState" class="flex items-center">
-    <div class="mt-20 ml-6">
-        <img [src]="player.photo" alt="{{ player.photo }}"
-            class="rounded-full overflow-hidden object-cover object-center w-72 h-72">
-    </div>
+<div *ngIf="!loading; else loadingState">
+    <app-header-inside></app-header-inside>
 
-    <div class="ml-10 mt-20">
-        <div class="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:space-x-8">
-            <div class="w-full sm:w-auto">
-                <span class="inline">Full Name: </span>
-                <span class="inline">{{ player.fullName }}</span>
-            </div>
-
-            <div class="w-full sm:w-auto">
-                <span class="inline">Appearances: </span>
-                <span class="inline">{{ player.appearances }}</span>
-            </div>
-
-            <div class="w-full sm:w-auto">
-                <span class="inline">Goals: </span>
-                <span class="inline">{{ player.goals }}</span>
-            </div>
-
-            <div class="w-full sm:w-auto">
-                <span class="inline">Assists: </span>
-                <span class="inline">{{ player.assists }}</span>
-            </div>
-
-            <div class="w-full sm:w-auto">
-                <span class="inline">Position: </span>
-                <span class="inline">{{ getPositionName(player.position.positionName) }}</span>
-            </div>
-
-            <div class="w-full sm:w-auto">
-                <span class="inline">Titles: </span>
-                <span class="inline">{{ player.titles }}</span>
-            </div>
+    <div class="flex items-center">
+        <div class="mt-20 ml-6">
+            <img [src]="player.photo" alt="{{ player.photo }}"
+                class="rounded-full overflow-hidden object-cover object-center w-72 h-72">
         </div>
 
-        <div class="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:space-x-8">
+        <div class="ml-10 mt-20">
+            <div class="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:space-x-8">
+                <div class="w-full sm:w-auto">
+                    <span class="inline">Full Name: </span>
+                    <span class="inline">{{ player.fullName }}</span>
+                </div>
 
-            <div class="w-full sm:w-auto">
-                <span class="inline">Nationality: </span>
-                <span class="inline">{{ getNationalityName(player.nationality.nationalityName) }}</span>
+                <div class="w-full sm:w-auto">
+                    <span class="inline">Appearances: </span>
+                    <span class="inline">{{ player.appearances }}</span>
+                </div>
+
+                <div class="w-full sm:w-auto">
+                    <span class="inline">Goals: </span>
+                    <span class="inline">{{ player.goals }}</span>
+                </div>
+
+                <div class="w-full sm:w-auto">
+                    <span class="inline">Assists: </span>
+                    <span class="inline">{{ player.assists }}</span>
+                </div>
+
+                <div class="w-full sm:w-auto">
+                    <span class="inline">Position: </span>
+                    <span class="inline">{{ getPositionName(player.position.positionName) }}</span>
+                </div>
+
+                <div class="w-full sm:w-auto">
+                    <span class="inline">Titles: </span>
+                    <span class="inline">{{ player.titles }}</span>
+                </div>
             </div>
 
-            <div class="w-full sm:w-auto">
-                <span class="inline">Birth: </span>
-                <span class="inline">{{player.dateOfBirth}}</span>
+            <div class="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:space-x-8">
+
+                <div class="w-full sm:w-auto">
+                    <span class="inline">Nationality: </span>
+                    <span class="inline">{{ getNationalityName(player.nationality.nationalityName) }}</span>
+                </div>
+
+                <div class="w-full sm:w-auto">
+                    <span class="inline">Birth: </span>
+                    <span class="inline">{{player.dateOfBirth}}</span>
+                </div>
+
+                <div class="w-full sm:w-auto">
+                    <span class="inline">Goals Ratio: </span>
+                    <span class="inline">{{player.goalsRatio}}</span>
+                </div>
+
+                <div class="w-full sm:w-auto">
+                    <span class="inline">Assists Ratio: </span>
+                    <span class="inline">{{player.assistsRatio}}</span>
+                </div>
+
+                <div class="w-full sm:w-auto">
+                    <span class="inline">Goal Contributions: </span>
+                    <span class="inline">{{ player.goalContributions }}</span>
+                </div>
             </div>
 
-            <div class="w-full sm:w-auto">
-                <span class="inline">Goals Ratio: </span>
-                <span class="inline">{{player.goalsRatio}}</span>
+            <div class="mt-4">
+                <span class="inline">Clubs: </span>
+                <span *ngFor="let clubName of player.clubPlayers; let i = index">
+                    <span class="block">{{i + 1}} &#41; {{ getClubName(clubName.club.clubName) }} </span>
+                </span>
             </div>
-
-            <div class="w-full sm:w-auto">
-                <span class="inline">Assists Ratio: </span>
-                <span class="inline">{{player.assistsRatio}}</span>
-            </div>
-
-            <div class="w-full sm:w-auto">
-                <span class="inline">Goal Contributions: </span>
-                <span class="inline">{{ player.goalContributions }}</span>
-            </div>
-        </div>
-
-        <div class="mt-4">
-            <span class="inline">Clubs: </span>
-            <span *ngFor="let clubName of player.clubPlayers; let i = index">
-                <span class="block">{{i + 1}} &#41; {{ getClubName(clubName.club.clubName) }} </span>
-            </span>
         </div>
     </div>
 </div>
 
-<div *ngIf="loading" class="mt-4">
+<div *ngIf="!loading" class="mt-4">
     <span class="inline">Information: </span>
     <span class="block">{{player.information}} </span>
 </div>

@@ -24,10 +24,18 @@ export class AboutPlayerComponent implements OnInit, OnDestroy {
     this.cookieService.delete('player')
   }
 
+  // ngOnInit(): void {
+  //   setTimeout(() => {
+  //     this.loading = true;
+  //     this.player = JSON.parse(this.cookieService.get('player'));
+  //   }, 500); 
+  // }
+
   ngOnInit(): void {
+    this.loading = true;
     setTimeout(() => {
-      this.loading = true;
       this.player = JSON.parse(this.cookieService.get('player'));
+      this.loading = false;
     }, 500); 
   }
 

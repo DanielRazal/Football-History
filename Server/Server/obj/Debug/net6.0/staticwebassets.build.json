@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "9G2aHKZc8IYHpUZmADtkH1Is13f0ImXsZQeG7nP/pXo=",
+  "Source": "FootballHistory",
+  "BasePath": "_content/FootballHistory",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "FootballHistory\\wwwroot",
+      "Source": "FootballHistory",
+      "ContentRoot": "C:\\Users\\97250\\Desktop\\FootballHistory\\Server\\Server\\wwwroot\\",
+      "BasePath": "_content/FootballHistory",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}

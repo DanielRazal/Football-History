@@ -87,21 +87,24 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("MyConnectionStri
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
-{
-    var ctx = scope.ServiceProvider.GetRequiredService<ServerContext>();
-    ctx.Database.EnsureDeleted();
-    ctx.Database.EnsureCreated();
+// using (var scope = app.Services.CreateScope())
+// {
+//     var ctx = scope.ServiceProvider.GetRequiredService<ServerContext>();
+//     ctx.Database.EnsureDeleted();
+//     ctx.Database.EnsureCreated();
 
-    var hostingEnvironment = scope.ServiceProvider.GetRequiredService<IWebHostEnvironment>();
-    string uploadsPath = Path.Combine(hostingEnvironment.WebRootPath, "uploads");
+//     var hostingEnvironment = scope.ServiceProvider.GetRequiredService<IWebHostEnvironment>();
+//     string uploadsPath = Path.Combine(hostingEnvironment.WebRootPath ?? string.Empty, "uploads");
 
-    if (Directory.Exists(uploadsPath))
-    {
-        Directory.Delete(uploadsPath, true);
-    }
-    Directory.CreateDirectory(uploadsPath);
-}
+//     if (!string.IsNullOrEmpty(uploadsPath))
+//     {
+//         if (Directory.Exists(uploadsPath))
+//         {
+//             Directory.Delete(uploadsPath, true);
+//         }
+//         Directory.CreateDirectory(uploadsPath);
+//     }
+// }
 
 if (app.Environment.IsDevelopment())
 {
