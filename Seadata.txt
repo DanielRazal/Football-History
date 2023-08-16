@@ -1,4 +1,5 @@
-{
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
             modelBuilder.Entity<Position>()
             .HasData(
                 new
@@ -581,7 +582,43 @@
                     new Question
                     {
                         Id = 21,
-                        Title = "111?",
+                        Title = "Which players won the Ballon d'Or??",
+                        QuestionTypeId = 2,
+                        QuizId = 1
+                    }
+
+                    ,
+                    new Question
+                    {
+                        Id = 22,
+                        Title = "Which players were born in Argentina?",
+                        QuestionTypeId = 2,
+                        QuizId = 1
+                    }
+
+                    ,
+                    new Question
+                    {
+                        Id = 23,
+                        Title = "Which players played in Barcelona or Real Madrid?",
+                        QuestionTypeId = 2,
+                        QuizId = 1
+                    }
+
+                    ,
+                    new Question
+                    {
+                        Id = 24,
+                        Title = "Which players played in the striker position?",
+                        QuestionTypeId = 2,
+                        QuizId = 1
+                    }
+
+                    ,
+                    new Question
+                    {
+                        Id = 25,
+                        Title = "Which teams won the Champions League?",
                         QuestionTypeId = 2,
                         QuizId = 1
                     }
@@ -1180,30 +1217,155 @@
                 new Answer
                 {
                     Id = 81,
-                    Text = "Brazil",
+                    Text = "Johan Cruyff",
                     IsCorrect = true,
                     QuestionId = 21
                 },
                 new Answer
                 {
                     Id = 82,
-                    Text = "Spain",
-                    IsCorrect = true,
+                    Text = "Pele",
+                    IsCorrect = false,
                     QuestionId = 21
                 },
                 new Answer
                 {
                     Id = 83,
-                    Text = "Portugal",
+                    Text = "Lionel Messi",
                     IsCorrect = true,
                     QuestionId = 21
                 },
                 new Answer
                 {
                     Id = 84,
-                    Text = "Italy",
-                    IsCorrect = true,
+                    Text = "Diego Maradona",
+                    IsCorrect = false,
                     QuestionId = 21
+                }
+
+                ,
+
+                new Answer
+                {
+                    Id = 85,
+                    Text = "Ferenc Puskás",
+                    IsCorrect = false,
+                    QuestionId = 22
+                },
+                new Answer
+                {
+                    Id = 86,
+                    Text = "Di Stéfano",
+                    IsCorrect = true,
+                    QuestionId = 22
+                },
+                new Answer
+                {
+                    Id = 87,
+                    Text = "Lionel Messi",
+                    IsCorrect = true,
+                    QuestionId = 22
+                },
+                new Answer
+                {
+                    Id = 88,
+                    Text = "Diego Maradona",
+                    IsCorrect = true,
+                    QuestionId = 22
+                }
+
+                ,
+
+                new Answer
+                {
+                    Id = 89,
+                    Text = "Ronaldo Nazário",
+                    IsCorrect = true,
+                    QuestionId = 23
+                },
+                new Answer
+                {
+                    Id = 90,
+                    Text = "Eusébio",
+                    IsCorrect = false,
+                    QuestionId = 23
+                },
+                new Answer
+                {
+                    Id = 91,
+                    Text = "Ronaldinho Gaúcho",
+                    IsCorrect = true,
+                    QuestionId = 23
+                },
+                new Answer
+                {
+                    Id = 92,
+                    Text = "Pele",
+                    IsCorrect = false,
+                    QuestionId = 23
+                }
+
+                ,
+
+                new Answer
+                {
+                    Id = 93,
+                    Text = "Ronaldo Nazário",
+                    IsCorrect = true,
+                    QuestionId = 24
+                },
+                new Answer
+                {
+                    Id = 94,
+                    Text = "Cristiano Ronaldo",
+                    IsCorrect = true,
+                    QuestionId = 24
+                },
+                new Answer
+                {
+                    Id = 95,
+                    Text = "Lionel Messi",
+                    IsCorrect = false,
+                    QuestionId = 24
+                },
+                new Answer
+                {
+                    Id = 96,
+                    Text = "Diego Maradona",
+                    IsCorrect = false,
+                    QuestionId = 24
+                }
+
+                ,
+
+                new Answer
+                {
+                    Id = 97,
+                    Text = "PSG",
+                    IsCorrect = false,
+                    QuestionId = 25
+                },
+                new Answer
+                {
+                    Id = 98,
+                    Text = "Barcelona",
+                    IsCorrect = true,
+                    QuestionId = 25
+                },
+                new Answer
+                {
+                    Id = 99,
+                    Text = "Benfica",
+                    IsCorrect = true,
+                    QuestionId = 25
+                },
+                new Answer
+                {
+                    Id = 100,
+                    Text = "Napoli",
+                    IsCorrect = false,
+                    QuestionId = 25
                 }
             );
         }
+    }
