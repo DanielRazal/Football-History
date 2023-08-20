@@ -79,7 +79,7 @@ export class QuizComponent implements OnInit {
   }
 
   resetTimer() {
-    this.timerSeconds = 10;
+    this.timerSeconds = 600;
     this.formattedTime = this.formatTime(this.timerSeconds);
     this.startTimer();
   }
