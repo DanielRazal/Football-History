@@ -4,7 +4,7 @@ Welcome to the Football History - a dynamic platform celebrating football's fine
 The Football History is a user-friendly website that the greatest football players of all time.\
 Here's what you can expect:
 
-**Explore Legends: Discover the top 10 football legends chosen by the creator. Get detailed info about their careers, achievements, and more.**
+* Explore Legends: Discover the top 10 football legends chosen by the creator. Get detailed info about their careers, achievements, and more.
 
 **Quick Quizzes: Test your knowledge with fun timed quizzes about the legends. Get a score and see how you rank on the Top Score table.**
 
