@@ -16,11 +16,9 @@ To run the **"Football-History"** project, execute the following commands:
 
 ### Server (C#):
 
-1. Open a terminal or command prompt and navigate to the server project directory: **cd /FootballHistory/Server/Server**
+1. navigate to **cd /FootballHistory/Server/Server**
 2. Change my **ConnectionString (appsettings.Json)** to yours.
-3. Start the server by running the following command:
-
-   **dotnet run**
+3. Start the server by running the following command **dotnet run**
    
 **Client**:
 
