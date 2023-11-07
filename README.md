@@ -20,16 +20,10 @@ To run the **"Football-History"** project, execute the following commands:
 2. Change my **ConnectionString (appsettings.Json)** to yours.
 3. Start the server by running the following command **dotnet run**
    
-**Client**:
+### Client (Angular):
 
-1. Open another terminal or command prompt and navigate to the client project directory:
+1. navigate to **cd /FootballHistory/Client**
 
-   **cd /FootballHistory/Client**
-
-2. Install the necessary dependencies by running the following command:
-
-   **npm install**
+2. Install client dependencies: **npm i**
    
-3. Start the client application by running the following command:
-
-   **ng serve**
+3. Start the Angular app: **ng serve**
