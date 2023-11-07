@@ -23,7 +23,5 @@ To run the **"Football-History"** project, execute the following commands:
 ### Client (Angular):
 
 1. navigate to **cd /FootballHistory/Client**
-
 2. Install client dependencies: **npm i**
-   
 3. Start the Angular app: **ng serve**
